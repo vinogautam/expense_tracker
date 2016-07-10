@@ -1,0 +1,47 @@
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false" class="bg-dark">
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="fr">
+		<h2><small>Add Expense</small></h2>
+		</div>
+		<span class="glyphicon glyphicon-dashboard bg-fade"></span>
+		<div class="jumbotron">
+			<div class="container">
+				<form name="expense_form" role="form" class="bottom-75" ng-submit="expense_form.$valid ? add_expense() : ''" novalidate="">
+					<div class="table-form">
+						<div class="form-groups">
+							<div class="form-group">
+								<label>Expense on </label>
+								<input type="text" required ng-model="expense.edate" class="form-control input-lg" id="">
+							</div>
+							<div class="form-group">
+								<label>Particulars</label>
+								<textarea required ng-model="expense.particulars" class="form-control input-lg"></textarea> 
+							</div>
+							<div class="form-group">
+								<label>Amount</label>
+								<input type="number" required ng-model="expense.amount" class="form-control input-lg" id="">
+							</div>
+							<div class="form-group">
+								<label>Paid By</label>
+								<select required class="form-control input-lg" ng-model="expense.paid_by">
+									<option value="">Select user</option>
+									<option ng-repeat="us in users" value="{{us.id}}">{{us.name}}-{{us.mobile}}</option>
+								</select>
+							</div>
+							<input type="submit" class="btn btn-primary" value="Submit" name="">
+						</div>
+					</div>		
+				</form>
+			</div>
+		</div>
+	</snap-content>	
+</div>
